@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public float thrust = 20;
+    public float thrust;
     public Rigidbody2D ship;
     public SpriteRenderer Explosion;
 
@@ -27,23 +27,18 @@ public class Player : MonoBehaviour {
         if (dead)
         {
              if(Input.anyKeyDown)
-             {
                 Application.LoadLevel(Application.loadedLevel);
-                 
-             }
 
             return;
         }
 
-		if (Input.GetMouseButtonDown(0) && thrust < 24)
+		if (Input.GetMouseButtonDown(0))
         {
-            thrust = thrust + 1;
-            ship.AddForce(transform.up * thrust);
+            ship.velocity = Vector2.zero;
+            ship.AddForce(new Vector2(0, thrust));
         }
 
-        if (thrust > 20)
-            thrust = thrust - 5;
-	}
+    }
 
     void OnBecameInvisible()
     {

@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc76b12e076ef848956998c57725a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 10
+  thrust: 30
   ship: {fileID: 0}
   Explosion: {fileID: 1140741921}
 --- !u!61 &669828761
