@@ -8,31 +8,21 @@ public class Player : MonoBehaviour {
     public Rigidbody2D ship;
     public SpriteRenderer Explosion;
 
-    bool dead = false;
+    bool paused = false;
+    public bool dead = false;
 
-    GameObject DeadText;
+    //GameObject DeadText;
 
 	// Use this for initialization
 	void Start () {
         ship = GetComponent<Rigidbody2D>();
         Explosion.sortingOrder = -1;
-
-        DeadText = GameObject.Find("DeadText");
-        DeadText.SetActive(false);
-
     }
 
     // Update is called once per frame
     void FixedUpdate () {
-        if (dead)
-        {
-             if(Input.anyKeyDown)
-                Application.LoadLevel(Application.loadedLevel);
 
-            return;
-        }
-
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0) && !paused)
         {
             ship.velocity = Vector2.zero;
             ship.AddForce(new Vector2(0, thrust));
@@ -50,21 +40,22 @@ public class Player : MonoBehaviour {
         Die();
     }
 
-    private void Die()
+    public void Die()
     {
         Explosion.sortingOrder = 9;
+        Pause();
         dead = true;
-        thrust = 0;
-        ship.bodyType = RigidbodyType2D.Static;
+    }
 
-        var buildings = GameObject.FindGameObjectsWithTag("Buidling");
+    public void Pause()
+    {
+        paused = true;
+        ship.bodyType = RigidbodyType2D.Static;       
+    }
 
-        foreach (var building in buildings)
-        {
-            Building build = building.GetComponent<Building>();
-            build.speed = 0;
-        }
-
-        DeadText.SetActive(true);
+    public void Resume()
+    {
+        paused = false;
+        ship.bodyType = RigidbodyType2D.Dynamic;
     }
 }

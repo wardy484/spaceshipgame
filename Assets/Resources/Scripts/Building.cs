@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Building : MonoBehaviour {
 
-    //Rigidbody2D rb;
     public bool top = false;
     public float speed = 0.05f;
 
-	// Use this for initialization
-	void Start () {
-      //  rb = GetComponent<Rigidbody2D>();
-	}
-	
-	// Update is called once per frame
+    private bool Paused = false;
+
 	void Update () {
-        transform.position = new Vector2(transform.position.x - speed, transform.position.y);
+
+        if (!Paused)
+        {
+            transform.position = new Vector2(transform.position.x - speed, transform.position.y);
+        }
+
     }
 
     void OnBecameInvisible()
@@ -28,6 +28,11 @@ public class Building : MonoBehaviour {
         {
             transform.position = new Vector2(11, Random.Range(-6, -3));
         }
+    }
+
+    public void SetPaused(bool paused)
+    {
+        Paused = paused;
     }
 
 }
