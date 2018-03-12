@@ -1092,11 +1092,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-<<<<<<< HEAD
   m_SortingOrder: 50
-=======
-  m_SortingOrder: 2
->>>>>>> f8a0c49c059eff333808892b044801d72d5c14b1
   m_TargetDisplay: 0
 --- !u!224 &1219530892
 RectTransform:
