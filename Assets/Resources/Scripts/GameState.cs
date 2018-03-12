@@ -21,9 +21,7 @@ public class GameState : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         MessageText = Message.GetComponent<Text>();
-        float x = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0.0f, 0.0f)).x + 2.1f;
-        float y = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0.0f, 0.0f)).y + 0.7f;
-        ScoreText.transform.position = new Vector2(x, y);
+
     
     }
 	
