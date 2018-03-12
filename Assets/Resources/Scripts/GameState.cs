@@ -7,16 +7,24 @@ using UnityEngine.UI;
 
 public class GameState : MonoBehaviour {
 
-    public Building[] buildings;
+    public List<Building> buildings = new List<Building>();
     public Player player;
     public GameObject Message;
-    private Text MessageText;
+    public Text ScoreText;
 
-    private State state = State.Start; 
+    private Text MessageText;
+    private State state = State.Start;
+    private int Score;
+    private float lastUpdate;
+    private float lastSpawn;
 
 	// Use this for initialization
 	void Start () {
         MessageText = Message.GetComponent<Text>();
+        float x = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0.0f, 0.0f)).x + 2.1f;
+        float y = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0.0f, 0.0f)).y + 0.7f;
+        ScoreText.transform.position = new Vector2(x, y);
+    
     }
 	
 	// Update is called once per frame
@@ -51,8 +59,27 @@ public class GameState : MonoBehaviour {
     {
         CheckForDeath();
 
+        if (Time.time - lastSpawn >= 1.7f)
+        { 
+            Debug.Log(Time.time - lastUpdate);
+            float x = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 1.0f, 0.0f)).y + 6f;
+            float y = Random.Range(-2.5f, -5.3f);
+
+            GameObject NewBuilding = Instantiate(Resources.Load("Prefabs/Buildings"), new Vector3(x, y, 0), Quaternion.identity) as GameObject;
+            buildings.Add(NewBuilding.GetComponent<Building>());
+            lastSpawn = Time.time;
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
             PauseGame("Game Paused, Click to continue...");
+
+        if (Time.time - lastUpdate >= 1f)
+        {
+            Score += 1;
+            lastUpdate = Time.time;
+        }
+
+        ScoreText.text = Score.ToString();
     }
 
     private void Paused()
@@ -101,9 +128,14 @@ public class GameState : MonoBehaviour {
 
     private void SetBuildingState(bool Paused)
     {
-        foreach (Building building in buildings)
+        if (buildings.Count > 0)
         {
-            building.SetPaused(Paused);
+            foreach (Building building in buildings)
+            {
+                if (building != null) 
+                    building.SetPaused(Paused);
+            }
+
         }
     }
 }
