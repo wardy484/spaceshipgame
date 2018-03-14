@@ -291,6 +291,7 @@
     <Compile Include="Assets\Resources\Scripts\Building.cs" />
     <Compile Include="Assets\Resources\Scripts\GameState.cs" />
     <Compile Include="Assets\Resources\Scripts\Player.cs" />
+    <Compile Include="Assets\Resources\Scripts\ScoreHolder.cs" />
     <Compile Include="Assets\Resources\Scripts\States.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

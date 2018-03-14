@@ -11,8 +11,6 @@ public class Player : MonoBehaviour {
     bool paused = false;
     public bool dead = false;
 
-    //GameObject DeadText;
-
 	// Use this for initialization
 	void Start () {
         ship = GetComponent<Rigidbody2D>();
@@ -20,7 +18,7 @@ public class Player : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void FixedUpdate () {
+    void Update () {
 
 		if (Input.GetMouseButtonDown(0) && !paused)
         {
@@ -45,6 +43,13 @@ public class Player : MonoBehaviour {
         Explosion.sortingOrder = 9;
         Pause();
         dead = true;
+    }
+
+    public void Revive()
+    {
+        Explosion.sortingOrder = -1;
+        dead = false;
+        Resume();
     }
 
     public void Pause()
