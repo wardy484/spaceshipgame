@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 
     bool paused = false;
     public bool dead = false;
+    private float lastY;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +26,19 @@ public class Player : MonoBehaviour {
             ship.velocity = Vector2.zero;
             ship.AddForce(new Vector2(0, thrust));
         }
+
+        if (ship.position.y < lastY)
+        {
+            ship.gameObject.transform.rotation = 
+                Quaternion.RotateTowards(ship.gameObject.transform.rotation, Quaternion.Euler(0, 0, -61f), 1.5f);
+        }
+        else if (ship.position.y > lastY)
+        {
+            ship.gameObject.transform.rotation =
+                Quaternion.RotateTowards(ship.gameObject.transform.rotation, Quaternion.Euler(0, 0, 6.86f), 10f);
+        }
+
+        lastY = ship.position.y;
 
     }
 
