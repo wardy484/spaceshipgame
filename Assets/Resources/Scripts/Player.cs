@@ -43,6 +43,15 @@ public class Player : MonoBehaviour {
         Explosion.sortingOrder = 9;
         Pause();
         dead = true;
+        PlayExplosion();
+
+    }
+
+    private void PlayExplosion()
+    {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.Play();
+        audio.Play(44100);
     }
 
     public void Revive()

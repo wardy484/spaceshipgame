@@ -157,7 +157,8 @@ public class GameState : MonoBehaviour {
                 scoreHolder.HighScore = Score;
             }
 
-            ScoreText.text = "High Score: " + scoreHolder.HighScore.ToString();
+            Debug.Log(scoreHolder.HighScore);
+            ScoreText.text = "High Score: " + scoreHolder.HighScore;
         }
 
         return player.dead;
@@ -175,6 +176,7 @@ public class GameState : MonoBehaviour {
             else
                 CreateMenu(Resources.Load("Prefabs/StartMenu"));
         }
+
         player.Pause();
         SetBuildingState(true);
     }
@@ -186,6 +188,10 @@ public class GameState : MonoBehaviour {
         player.Resume();
         SetBuildingState(false);
         Time.timeScale = 1;
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.Play();
+        audio.Play(44100);
+
     }
 
     private void SetBuildingState(bool Paused)

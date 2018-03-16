@@ -1,4 +1,4 @@
-WebGL
+WindowsStandalone
 SceneListBegin?
 Assets/Main.unity
 SceneListEnd?
@@ -140,5 +140,6 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+27b088539388a5c78ffb892256c27240 Assembly-CSharp.dll:.ScoreHolder
 e48eb2e461d583069351b4a4ee92ee84 Assembly-CSharp.dll:.Building
-424bb63d9521f7891502c3b4ead324c6 Assembly-CSharp.dll:.GameState
+9a216288bb807ed7461222d71c761957 Assembly-CSharp.dll:.GameState

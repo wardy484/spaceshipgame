@@ -5,7 +5,7 @@ using UnityEngine;
 public class Building : MonoBehaviour {
 
     public bool top = false;
-    public float speed = 0.05f;
+    public float speed = 0.1f;
     public Camera cam;
 
     private bool Paused = false;
